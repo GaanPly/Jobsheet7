@@ -1,44 +1,35 @@
 import java.util.Scanner;
-
-public class parkirLoop23 {
+public class Tugas2_jobsheet7_11 {
     public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
-        int jenis, durasi, total = 0, jumlahKendaraan, i = 0;
+        Scanner sc = new Scanner(System.in);
 
-        System.out.print("inisialisasi aplikasi 1(Ya) / 0(Tidak) : ");
-        i = input.nextInt();
+        int jenisKendaraan, durasi, total = 0;
 
-        if (i == 1) {
-            System.out.print("Masukkan Jumlah Kendaraan yang masuk : ");
-            jumlahKendaraan = input.nextInt();
-            while (i <= jumlahKendaraan ) {
-                System.out.println("masukkan Jenis Kendaraan");
-                System.out.println("1. Motor");
-                System.out.println("2. Mobil");
-                System.out.print("Input = ");
-                jenis = input.nextInt();
+        do {
+            System.out.println("=== Sistem Parkir ===");
+            System.out.print(" 1. Mobil\n 2. Motor\n 0. Keluar\n");
+            System.out.print("Masukkan jenis kendaraan: ");
+            jenisKendaraan = sc.nextInt();
 
-                System.out.print("input durasi : ");
-                durasi = input.nextInt();
+            if (jenisKendaraan < 0 || jenisKendaraan > 2) {
+                System.out.println("input jenis kendaraan invalid!");
+            }
 
+            if (jenisKendaraan == 1 || jenisKendaraan == 2) {
+                System.out.print("Durasi parkir (jam): ");
+                durasi = sc.nextInt();
                 if (durasi > 5) {
                     total += 12500;
-                }
-                else if (jenis == 1) {
-                    total += durasi * 2000;
-                }
-                else if (jenis == 2) {
-                    total += durasi * 3000;
-                }
-                else if (durasi < 0 || jenis > 2 || jenis < 0) {
-                    System.out.println("input invalid");
-                }
-                i++;
+                } else if (jenisKendaraan == 1) {
+                    total += durasi*3000;
+                } else if (jenisKendaraan == 2) {
+                    total += durasi*2000;
+                }  
+
             }
-            System.out.println("Total Pendapatan : Rp " + total);
-        }
-        else {
-            System.out.println("Tutup Aplikasi");    
-        }
-    }
+            System.out.println("Total biaya parkir: Rp" + total);
+        } while (jenisKendaraan != 0);
+        
+    } 
+
 }
